@@ -101,7 +101,6 @@ world_data <- world_data %>%
    
 ```
 
-
 ```{r echo=FALSE,message=F,warning=FALSE}
  #Calculate weighted average suicide rate per 100,000 people for each country
 weighted_avg_suicide_rate_per_country <- world_data %>%
@@ -143,7 +142,6 @@ overall_avg_suicide_rate <- weighted_avg_suicide_rate_per_country %>%
   round(2)
 ```
 
-
 ```{r focus on Hungary, echo=FALSE,message=F,warning=FALSE}
 # Hungary Specific Data
 hungary_suicide_data <- world_data %>%
@@ -156,11 +154,13 @@ hungary_suicide_data_adjusted <- hungary_suicide_data %>%
 ```
 
 
+
 # HOME 
 
 The project explores global suicide rates in relation to the Gini Index—a measure of income inequality from 0 to 1—between 2004 and 2019. Using population data, it aims to offer demographic insights into worldwide suicide rates through an interactive dashboard. This tool will aid policymakers, researchers, and the public in understanding these socio-economic factors, with a focus on Hungary. During this period, Lithuania had the highest weighted average suicide rate of 39.4 per 100,000 people, while Syria had the lowest at 1.7 per 100,000 people. The average suicide rate across analyzed countries during this timeframe was 10.56 per 100,000 people.Please note that the Gini Index data displayed in this dashboard is available for the years 2004 to 2019.
 
 ## Row 1 {height=25%}
+
 
 ```{r echo=FALSE,message=F,warning=FALSE}
 value_box(
@@ -191,9 +191,11 @@ value_box(
 )
 ```
 
+
 ## Row 2 {height=75%}
 
 ### {width=50%}
+
 
 ```{r echo=FALSE,message=F,warning=FALSE}
 # ggplot for the map with frame and tooltip labels
@@ -210,7 +212,9 @@ suicide_rate_map <- ggplot(world_data, aes(fill = suicide_rate_per_100k, frame =
  ggplotly(suicide_rate_map, tooltip = "text")
 ```
 
+
 ### {width=50%}
+
 
 ```{r echo=FALSE,message=F,warning=FALSE}
 # Extract the top 20 countries by weighted average suicide rate
@@ -237,11 +241,13 @@ bar_plot_1 <- ggplot(top_20_weighted_countries, aes(x = reorder(country, weighte
 ggplotly(bar_plot_1, tooltip = "text")
 ```
 
+
 # GINI INDEX
 
 Please note that the Gini Index data displayed in this dashboard is available for the years 2004 to 2019.
 
 ## Row 1 {height=50%}
+
 
 
 ```{r echo=FALSE,message=F,warning=FALSE}
@@ -257,7 +263,9 @@ time_series_plot <- ggplot(hungary_suicide_data_adjusted, aes(x = year, y = adju
 ggplotly(time_series_plot)
 ```
 
+
 ## Row 2 {height=50%}
+
 
 ```{r echo=FALSE,message=F,warning=FALSE}
 # Correlation plot (interactive)
@@ -281,9 +289,11 @@ ggplotly(adjusted_correlation_plot, tooltip = "text")
 ```
 
 
+
 # DOWNLOAD CSV
 
 The data used in this dashboard is shown below and can be downloaded as a CSV.
+
 
 ```{r}
 library(htmltools)
@@ -310,7 +320,4 @@ htmltools::browsable(
 )
 
 ```
-
-
-
 
